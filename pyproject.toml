@@ -9,7 +9,7 @@ authors = [{name='Lily Ridley'}]
 description = 'Retrieve and plot career matches of tennis players from tennisabstract.com'
 readme = 'README.md'
 requires-python = '>=3.10'
-dependencies = ['pandas', 'matplotlib', 'requests']
+dependencies = ['numpy', 'pandas', 'matplotlib', 'requests']
 
 [project.optional-dependencies]
 test = ['pytest']
