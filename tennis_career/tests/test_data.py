@@ -35,6 +35,7 @@ def test_male_opp_age_used_directly():
     assert df.loc[0, 'age_diff'] == pytest.approx(-6.99, abs=0.01)
 
 def test_unknown_player(monkeypatch):
+    # Test that a clear error is raised for an unknown player
     class NotFound:
         status_code = 404
     monkeypatch.setattr(data.requests, 'get', lambda url, timeout=None: NotFound())
