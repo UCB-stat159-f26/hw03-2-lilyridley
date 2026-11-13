@@ -1,0 +1,18 @@
+[build-system]
+requires = ['setuptools >= 70']
+build-backend = 'setuptools.build_meta'
+
+[project]
+name = 'tennis_career'
+version = '0.1.0'
+authors = [{name='Lily Ridley'}]
+description = 'Retrieve and plot career matches of tennis players from tennisabstract.com'
+readme = 'README.md'
+requires-python = '>=3.10'
+dependencies = ['pandas', 'matplotlib', 'requests']
+
+[project.optional-dependencies]
+test = ['pytest']
+
+[tool.setuptools]
+packages = ['tennis_career']
