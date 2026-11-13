@@ -5,7 +5,7 @@ This repository contains a Python package that retrieves the career matches of a
 ## Installation
 
 ```bash
-pip install git+https://github.com/UCB-stat159-f26/hw02-2-lilyridley
+pip install git+https://github.com/UCB-stat159-f26/hw03-2-lilyridley.git
 ```
 
 ## Usage
@@ -14,7 +14,7 @@ pip install git+https://github.com/UCB-stat159-f26/hw02-2-lilyridley
 from tennis_career import get_player_career, plot_age_gap
 
 # Serena Williams data and plot
-serena = get_player_career('serena williams')
+serena = get_player_career("serena williams")
 plot_age_gap(serena)
 
 # Rafael Nadal data and plot
@@ -22,7 +22,7 @@ rafael = get_player_career("Rafael Nadal")
 plot_age_gap(rafael)
 
 # An invalid name returns a meaningful error message
-unknown_player = data_function("LilyRidley")
+unknown_player = get_player_career("LilyRidley")
 ```
 
 ## Functions
