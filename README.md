@@ -32,6 +32,22 @@ unknown_player = data_function("LilyRidley")
   age, in years)
 - `plot_age_gap(career_df)`: takes the DataFrame created by `get_player_career` and creates a scatter plot of the player's age (x-axis) against `age_diff` (y-axis), with matches won and lost in different colors
 
+## Repository Structure
+
+```text
+hw03-2-lilyridley/
+├── README.md             
+├── pyproject.toml         # package metadata and dependencies
+├── .gitignore
+└── tennis_career/         # the package
+    ├── __init__.py        # imports get_player_career() and plot_age_gap()
+    ├── data.py            # downloads and cleans a player's career data
+    ├── plot.py            # creates the age-gap scatter plot
+    └── tests/
+        ├── test_data.py   # tests for name formatting and data processing
+        └── test_plot.py   # tests for the plot function
+```
+
 ## Tests
 
 The tests use mock career files and avoid hitting live servers. Run them from the repo folder with:
@@ -41,3 +57,7 @@ pip install -e .
 pip install pytest
 pytest -v
 ```
+
+## Reflections
+
+This homework was very interesting to me because it made me realize how many different inputs a function has to account for. For example, the first function creates a DataFrame of a tennis player's career matches, but there are a lot of details behind that: how the user might write the player's name (capitalized or not, with or without a space), whether the raw data file includes the player's date of birth, and how to compute ages from it. It was also interesting to think about what the tests should look like: which parts of the package they should cover, and how to check the output against a correct answer. I learned a lot from this assignment because it pushed me to think about all the different edge cases and small details that go into building a package.
