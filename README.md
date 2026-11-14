@@ -36,10 +36,10 @@ unknown_player = get_player_career("LilyRidley")
 
 ```text
 hw03-2-lilyridley/
-├── README.md             
+├── README.md
+├── .gitignore             # files and folders Git should not track
+├── ai_documentation.txt   # outlines the use of AI            
 ├── pyproject.toml         # package metadata and dependencies
-├── .gitignore
-├── ai_documentation.txt   # outlines the use of AI
 └── tennis_career/         # the package
     ├── __init__.py        # imports get_player_career() and plot_age_gap()
     ├── data.py            # downloads and cleans a player's career data
