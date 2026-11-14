@@ -39,6 +39,7 @@ hw03-2-lilyridley/
 ├── README.md             
 ├── pyproject.toml         # package metadata and dependencies
 ├── .gitignore
+├── ai_documentation.txt   # outlines the use of AI
 └── tennis_career/         # the package
     ├── __init__.py        # imports get_player_career() and plot_age_gap()
     ├── data.py            # downloads and cleans a player's career data
