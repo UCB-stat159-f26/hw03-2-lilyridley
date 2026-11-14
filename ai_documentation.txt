@@ -1,0 +1,57 @@
+Model: Claude by Anthropic, Sonnet 5.5
+
+I used AI to help me write a test for the error message in the get_player_career() function
+
+Input: I made a function (test_unknown_player) that takes in a tennis player's name and returns a clean data frame of their career matches (the date, win/loss, opponent, etc.). It returns a meaningful error if the player's name can't be found ('Could not find a player named "{formatted_name}". Make sure to check the spelling.'). What is the best way to do a test with pytest to make sure the error message works properly? I want to avoid hitting live servers entirely during automated tests.
+
+Output:
+Drafting a pytest template for error-message tests.
+
+Here’s a version with placeholders for you to fill in:
+
+python
+import re
+import pytest
+import your_module as module  # the module where your function lives
+
+
+def test_unknown_player(monkeypatch):
+    # Test that a clear error is raised for an unknown player
+    class NotFound:
+        status_code = 404
+
+    monkeypatch.setattr(module.requests, 'get', lambda url, timeout=None: NotFound())
+
+    expected = 'Could not find a player named "Some Name". Make sure to check the spelling.'
+    with pytest.raises(ValueError, match=re.escape(expected)):
+        get_player_matches('Some Name')
+
+- Patch where the code looks it up. module.requests has to be the same requests your function calls. If your code does from requests import get, patch module.get instead.
+- Match the lambda’s signature to your real call. If you call requests.get(url, headers=..., timeout=...), use lambda url, **kwargs: NotFound(). This also keeps the test from breaking when you add arguments later.
+- Use re.escape for the full message. match= is a regex, and your message has quotes and a period. A partial match like 'Could not find a player' also works if you don’t need the exact text.
+- Fake only what your code reads. If it calls response.raise_for_status() or response.text, add those to the fake class.
+
+
+I also used AI to give me a fillable repository structure for my README
+
+Input:
+Give me a blank repository structure for me to fill in for my README file, after the main repo root, there are 4 files and 1 folder on the main branch, then 3 files and 1 subdirectory in the folder, then 2 more files in the subdirectory.
+
+Output:
+repo-name/
+├── file_1
+├── file_2
+├── file_3
+├── file_4
+└── folder/
+    ├── file_1
+    ├── file_2
+    ├── file_3
+    └── subfolder/
+        ├── file_1
+        └── file_2
+
+The root has 4 files and 1 folder. The folder has 3 files and 1 subfolder, and the subfolder has 2 files. If you want to annotate each entry in the README, add a comment column, for example file_1 # what it does.
+
+
+AI was also used for debugging and minor aesthetic details in creating the scatter plot function
